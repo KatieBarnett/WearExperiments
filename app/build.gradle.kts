@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "dev.katiebarnett.wearexperiments"
-    compileSdkPreview = "Tiramisu"
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "dev.katiebarnett.wearexperiments"
-        minSdkPreview = "Tiramisu"
-        targetSdkPreview = "Tiramisu"
+        minSdk = 30
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
         vectorDrawables {

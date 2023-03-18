@@ -39,7 +39,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = "1.4.3"
     }
     packagingOptions {
         resources {
@@ -54,19 +54,26 @@ dependencies {
     implementation("com.google.android.gms:play-services-wearable:18.0.0")
     implementation("androidx.percentlayout:percentlayout:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    implementation(platform("androidx.compose:compose-bom:2022.10.00"))
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
+
+    implementation(platform("androidx.compose:compose-bom:2023.01.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.wear.compose:compose-material:${rootProject.extra["wear_compose_version"]}")
     implementation("androidx.wear.compose:compose-foundation:${rootProject.extra["wear_compose_version"]}")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
-    implementation("androidx.activity:activity-compose:1.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0")
+    implementation("androidx.activity:activity-compose:1.6.1")
     implementation("androidx.wear.tiles:tiles:${rootProject.extra["wear_tiles_version"]}")
     implementation("androidx.wear.tiles:tiles-material:${rootProject.extra["wear_tiles_version"]}")
     implementation("com.google.android.horologist:horologist-compose-tools:${rootProject.extra["horologist_version"]}")
     implementation("com.google.android.horologist:horologist-tiles:${rootProject.extra["horologist_version"]}")
     implementation("androidx.wear.watchface:watchface-complications-data-source-ktx:1.1.1")
+    implementation("androidx.wear:wear-input:1.2.0-alpha02")
+    implementation("androidx.compose.material:material-icons-core:1.3.1")
+    implementation("androidx.wear.compose:compose-navigation:${rootProject.extra["wear_compose_version"]}")
+
+
+
     androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")

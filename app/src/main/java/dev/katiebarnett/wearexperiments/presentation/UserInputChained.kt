@@ -33,16 +33,30 @@ import dev.katiebarnett.wearexperiments.R
 
 
 @Composable
-fun UserInputScreen(
+fun UserInputChainedScreen(
     modifier: Modifier = Modifier
 ) {
     val defaultText = stringResource(id = R.string.edit_user_input)
     var userInput by remember { mutableStateOf(defaultText) }
-    val inputTextKey = "input_text"
+    val inputTextKey1 = "input_text_1"
+    val inputTextKey2 = "input_text_2"
+    val inputTextKey3 = "input_text_3"
 
     val remoteInputs: List<RemoteInput> = listOf(
-        RemoteInput.Builder(inputTextKey)
-            .setLabel(stringResource(id = R.string.edit_user_input))
+        RemoteInput.Builder(inputTextKey1)
+            .setLabel(stringResource(R.string.edit_user_input_1))
+            .wearableExtender {
+                setEmojisAllowed(true)
+                setInputActionType(EditorInfo.IME_ACTION_NEXT)
+            }.build(),
+        RemoteInput.Builder(inputTextKey2)
+            .setLabel(stringResource(R.string.edit_user_input_2))
+            .wearableExtender {
+                setEmojisAllowed(true)
+                setInputActionType(EditorInfo.IME_ACTION_NEXT)
+            }.build(),
+        RemoteInput.Builder(inputTextKey3)
+            .setLabel(stringResource(R.string.edit_user_input_2))
             .wearableExtender {
                 setEmojisAllowed(true)
                 setInputActionType(EditorInfo.IME_ACTION_DONE)
@@ -54,8 +68,10 @@ fun UserInputScreen(
     ) {
         it.data?.let { data ->
             val results: Bundle = RemoteInput.getResultsFromIntent(data)
-            val newInputText: CharSequence? = results.getCharSequence(inputTextKey)
-            userInput = newInputText?.toString() ?: ""
+            val newInputText1: CharSequence = results.getCharSequence(inputTextKey1) ?: ""
+            val newInputText2: CharSequence = results.getCharSequence(inputTextKey2) ?: ""
+            val newInputText3: CharSequence = results.getCharSequence(inputTextKey3) ?: ""
+            userInput = "$newInputText1 $newInputText2 and $newInputText3"
         }
     }
 
@@ -78,38 +94,5 @@ fun UserInputScreen(
                 )
             }
         }
-    }
-
-}
-
-@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
-@Composable
-fun UserInputScreenPreviewSmallRound() {
-    MaterialTheme {
-        UserInputScreen()
-    }
-}
-
-@Preview(device = Devices.WEAR_OS_LARGE_ROUND, showSystemUi = true)
-@Composable
-fun UserInputScreenPreviewLargeRound() {
-    MaterialTheme {
-        UserInputScreen()
-    }
-}
-
-@Preview(device = Devices.WEAR_OS_RECT, showSystemUi = true)
-@Composable
-fun UserInputScreenPreviewRect() {
-    MaterialTheme {
-        UserInputScreen()
-    }
-}
-
-@Preview(device = Devices.WEAR_OS_SQUARE, showSystemUi = true)
-@Composable
-fun UserInputScreenPreviewSquare() {
-    MaterialTheme {
-        UserInputScreen()
     }
 }

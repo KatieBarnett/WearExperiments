@@ -23,6 +23,7 @@ import dev.katiebarnett.wearexperiments.R
 fun HomeScreen(
     listState: ScalingLazyListState,
     onUserInputClick: () -> Unit,
+    onUserInputChainedClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     ScalingLazyColumn(
@@ -46,6 +47,15 @@ fun HomeScreen(
                 modifier = Modifier.fillMaxWidth()
             )
         }
+        item {
+            Chip(
+                label = { Text(text = stringResource(id = R.string.user_input_chained)) },
+                onClick = onUserInputChainedClick,
+                colors = ChipDefaults.chipColors(),
+                border = ChipDefaults.chipBorder(),
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
     }
 }
 
@@ -53,6 +63,6 @@ fun HomeScreen(
 @Composable
 fun DefaultPreview() {
     MaterialTheme {
-        HomeScreen(rememberScalingLazyListState(), {})
+        HomeScreen(rememberScalingLazyListState(), {}, {})
     }
 }

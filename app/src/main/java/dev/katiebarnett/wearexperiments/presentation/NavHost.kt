@@ -21,10 +21,15 @@ fun NavHost(
         composable("home") {
             HomeScreen( listState = listState, onUserInputClick = {
                 navController.navigate("userInput")
+            }, onUserInputChainedClick = {
+                navController.navigate("userInputChained")
             })
         }
         composable("userInput") {
             UserInputScreen()
+        }
+        composable("userInputChained") {
+            UserInputChainedScreen()
         }
     }
 }

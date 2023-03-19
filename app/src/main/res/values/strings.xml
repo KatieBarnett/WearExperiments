@@ -13,10 +13,14 @@
     <string name="experiment_heading">Experiments</string>
 
     <string name="user_input">User Input</string>
+    <string name="user_input_chained">User Input Chained</string>
 
 
 
     <string name="edit_user_input">Enter your input</string>
+    <string name="edit_user_input_1">Enter your first input</string>
+    <string name="edit_user_input_2">Enter your second input</string>
+    <string name="edit_user_input_3">Enter your third input</string>
 
 
 </resources>
